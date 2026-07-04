@@ -1,290 +1,544 @@
-/* ═══════════ CLIMA EXPERT HVAC — style.css ═══════════ */
-:root{
-  --navy:#1565C0;
-  --navy-deep:#0D47A1;
-  --steel:#1E88E5;
-  --steel-lt:#64B5F6;
-  --cyan:#29B6F6;
-  --cyan-lt:#E1F5FE;
-  --orange:#E8801F;
-  --orange-lt:#FDF0E2;
-  --ice:#EAF6FF;
-  --white:#fff;
-  --text:#123259;
-  --slate:#5A7FA6;
-  --border:#D2E9FB;
-  --ok:#1D8A5A;
-  --ok-lt:#E4F5EC;
-}
-*{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{font-family:'Inter',system-ui,sans-serif;color:var(--text);background:var(--white);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.7}
-.mono{font-family:'IBM Plex Mono',monospace}
-img{max-width:100%;display:block}
-a{color:inherit}
-section{scroll-margin-top:365px}
-@media(max-width:600px){section{scroll-margin-top:245px}}
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Clima Expert HVAC Cluj — Climatizare, Ozonizare, Service A.C.</title>
+<meta name="description" content="Servicii HVAC profesionale in Cluj-Napoca: climatizare industriala, rezidentiala, auto, ozonizare, igienizare, reparatii, mentenanta si revizii A.C.">
+<meta name="theme-color" content="#1565C0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
 
-/* ═══ NAV ═══ */
-.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,.97);backdrop-filter:blur(18px);border-bottom:1px solid transparent;transition:all .3s}
-.nav.scrolled{border-color:var(--border);box-shadow:0 2px 24px rgba(15,37,69,.06)}
-.nav-inner{max-width:1220px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:4px 24px}
-.nav-logo img{height:336px;width:auto;transition:transform .3s}
-@media(max-width:600px){.nav-logo img{height:222px}}
-.nav-logo:hover img{transform:scale(1.03)}
-.nav-links{display:flex;align-items:center;gap:4px;list-style:none}
-.nav-item{position:relative}
-.nav-item > a,.nav-item > button{color:var(--navy);text-decoration:none;font-size:.87rem;font-weight:600;padding:11px 15px;border-radius:9px;background:none;border:none;cursor:pointer;font-family:inherit;display:flex;align-items:center;gap:6px;transition:all .2s}
-.nav-item > a:hover,.nav-item > button:hover{color:var(--steel);background:var(--ice)}
-.caret{width:10px;height:10px;transition:transform .25s;flex-shrink:0}
-.nav-item.open > button .caret{transform:rotate(180deg)}
-.nav-cta{background:var(--navy)!important;color:#fff!important;padding:11px 22px!important;border-radius:9px!important;font-weight:700!important}
-.nav-cta:hover{background:var(--steel)!important;transform:translateY(-2px)}
+<nav class="nav" id="nav">
+<div class="nav-inner">
+  <a href="#" class="nav-logo"><img src="images/logo.jpg" alt="Clima Expert HVAC"></a>
+  <button class="hamburger" id="hb" aria-label="Meniu"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="nl">
+    <li class="nav-item">
+      <button data-dd>Servicii HVAC <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg></button>
+      <div class="dd">
+        <div class="dd-item">
+          <button class="dd-link" data-dd>
+            <span class="dd-ico ico-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M6 7V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3"/><line x1="6" y1="12" x2="6" y2="16"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="18" y1="12" x2="18" y2="16"/></svg></span>
+            Climatizare <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="dd2">
+            <a href="#climatizare-industriala" class="dd-link"><span class="dd-ico ico-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M6 7V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3"/><line x1="6" y1="12" x2="6" y2="16"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="18" y1="12" x2="18" y2="16"/></svg></span>Industriala</a>
+            <a href="#climatizare-rezidentiala" class="dd-link"><span class="dd-ico ico-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span>Rezidentiala</a>
+            <a href="#climatizare-auto" class="dd-link"><span class="dd-ico ico-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></span>Auto si Utilaje</a>
+          </div>
+        </div>
+        <div class="dd-item">
+          <button class="dd-link" data-dd>
+            <span class="dd-ico ico-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+            Service A.C. <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="dd2">
+            <a href="#igienizare" class="dd-link"><span class="dd-ico ico-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>Igienizare</a>
+            <a href="#reparatii" class="dd-link"><span class="dd-ico ico-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></span>Reparatii</a>
+            <a href="#mentenanta" class="dd-link"><span class="dd-ico ico-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>Mentenanta</a>
+            <a href="#revizii" class="dd-link"><span class="dd-ico ico-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>Revizii</a>
+          </div>
+        </div>
+      </div>
+    </li>
+    <li class="nav-item"><a href="#despre">Despre noi</a></li>
+    <li class="nav-item"><a href="#galerie">Galerie</a></li>
+    <li class="nav-item"><a href="#recenzii">Recenzii</a></li>
+    <li class="nav-item"><a href="#contact">Contact</a></li>
+    <li class="nav-item"><a href="tel:+40758552980" class="nav-cta">Suna acum</a></li>
+  </ul>
+</div>
+</nav>
 
-/* dropdown level 1 */
-.dd{position:absolute;top:calc(100% + 8px);left:0;min-width:270px;background:var(--white);border-radius:14px;box-shadow:0 22px 56px rgba(15,37,69,.15);border:1px solid var(--border);padding:8px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:all .22s cubic-bezier(.4,0,.2,1)}
-.nav-item.open > .dd{opacity:1;visibility:visible;transform:translateY(0)}
-.dd-item{position:relative}
-.dd-link{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:10px;text-decoration:none;color:var(--text);font-size:.87rem;font-weight:600;transition:background .18s;width:100%;background:none;border:none;cursor:pointer;font-family:inherit;justify-content:flex-start;text-align:left}
-.dd-link:hover{background:var(--ice)}
-.dd-ico{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.dd-ico svg{width:18px;height:18px}
-.dd-link .caret{margin-left:auto;transform:rotate(-90deg)}
-.dd-item.open > .dd-link .caret{transform:rotate(-90deg) scaleX(-1)}
+<section class="hero" id="acasa">
+  <div class="hero-grid"></div>
+  <div class="hero-orb orb-a"></div>
+  <div class="hero-orb orb-b"></div>
+  <div class="hero-orb orb-c"></div>
+  <div class="deco-icon deco-1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M19.07 4.93L4.93 19.07"/></svg></div>
+  <div class="deco-icon deco-2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg></div>
+  <div class="deco-icon deco-3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2.69s-5.5 6.36-5.5 10.65a5.5 5.5 0 0 0 11 0c0-4.29-5.5-10.65-5.5-10.65z"/></svg></div>
+  <div class="hero-inner">
+    <div class="kicker rv">Servicii HVAC profesionale &middot; Cluj-Napoca</div>
+    <h1 class="rv">Climatizare, ozonizare si <span>service profesional A.C.</span></h1>
+    <p class="hero-lead rv">Solutii complete pentru spatii industriale, rezidentiale si vehicule. Diagnosticare, montaj, igienizare si mentenanta — totul de la o singura echipa.</p>
+    <div class="btn-row rv">
+      <a href="https://wa.me/40758552980?text=Buna%20ziua%2C%20as%20dori%20o%20oferta%20personalizata." class="btn btn-navy">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+        Cere oferta personalizata
+      </a>
+      <a href="tel:+40758552980" class="btn btn-ghost">0758 552 980</a>
+    </div>
+    <div class="stats rv">
+      <div class="stat"><span class="stat-num mono" data-count="10" data-suffix="+">0+</span><span class="stat-lbl">Ani experienta</span></div>
+      <div class="stat"><span class="stat-num mono" data-count="500" data-suffix="+">0+</span><span class="stat-lbl">Interventii</span></div>
+      <div class="stat"><span class="stat-num mono" data-count="4.9">0</span><span class="stat-lbl">Rating mediu</span></div>
+      <div class="stat"><span class="stat-num mono">&lt;2h</span><span class="stat-lbl">Timp raspuns</span></div>
+    </div>
+  </div>
+  <div class="hero-wave">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none"><path fill="#ffffff" d="M0,32L80,28C160,24,320,16,480,18.7C640,21,800,35,960,37.3C1120,40,1280,32,1360,28L1440,24L1440,60L1360,60C1280,60,1120,60,960,60C800,60,640,60,480,60C320,60,160,60,80,60L0,60Z"/></svg>
+  </div>
+</section>
 
-/* dropdown level 2 (flyout) */
-.dd2{position:absolute;top:-8px;left:calc(100% + 6px);min-width:230px;background:var(--white);border-radius:14px;box-shadow:0 22px 56px rgba(15,37,69,.15);border:1px solid var(--border);padding:8px;opacity:0;visibility:hidden;transform:translateX(-6px);transition:all .22s}
-.dd-item.open > .dd2{opacity:1;visibility:visible;transform:translateX(0)}
-.dd2 .dd-link{font-size:.84rem;padding:10px 12px}
+<section class="sec" id="despre">
+<div class="sec-inner center">
+  <div class="eyebrow rv">Prezentarea firmei</div>
+  <h2 class="h2 rv">Cine suntem</h2>
+  <p class="sub rv">Datele oficiale ale companiei care sta in spatele serviciilor Clima Expert HVAC.</p>
 
-.hamburger{display:none;background:none;border:none;cursor:pointer;width:40px;height:40px;position:relative;z-index:210}
-.hamburger span{display:block;width:22px;height:2px;background:var(--navy);position:absolute;left:9px;transition:all .3s}
-.hamburger span:nth-child(1){top:13px}.hamburger span:nth-child(2){top:19px}.hamburger span:nth-child(3){top:25px}
-.hamburger.open span:nth-child(1){top:19px;transform:rotate(45deg)}
-.hamburger.open span:nth-child(2){opacity:0}
-.hamburger.open span:nth-child(3){top:19px;transform:rotate(-45deg)}
+  <div class="company-card rv">
+    <span class="company-badge">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l8-4v18M13 21V11l6 3v7M9 9v.01M9 12v.01M9 15v.01"/></svg>
+      Prezentare oficiala
+    </span>
+    <h3 class="company-name">S.C. Compusys S.R.L. — HVAC din 2004</h3>
+    <p class="company-desc">Companie specializata in climatizare, ventilatie, frigotehnica, incalzire si automatizare. Oferim consultanta, mentenanta, instalatii si punere in functiune pentru sisteme industriale, comerciale si rezidentiale.</p>
+    <div class="company-facts">
+      <div class="company-fact"><div class="company-fact-l">Infiintata</div><div class="company-fact-v">19.04.2004</div></div>
+      <div class="company-fact"><div class="company-fact-l">CUI</div><div class="company-fact-v">16345448</div></div>
+      <div class="company-fact"><div class="company-fact-l">Reg. Comertului</div><div class="company-fact-v">J31/265/2004</div></div>
+      <div class="company-fact"><div class="company-fact-l">Certificare filtre</div><div class="company-fact-v">ISO 9001</div></div>
+    </div>
+    <p class="company-tagline">Servicii performante pentru confortul dumneavoastra.</p>
+  </div>
+</div>
+</section>
 
-@media(max-width:960px){
-  .hamburger{display:block}
-  .nav-links{position:fixed;top:0;right:-100%;width:330px;max-width:90vw;height:100dvh;background:var(--white);flex-direction:column;justify-content:flex-start;align-items:stretch;gap:0;padding:80px 18px 30px;box-shadow:-16px 0 50px rgba(0,0,0,.12);transition:right .38s cubic-bezier(.4,0,.2,1);overflow-y:auto}
-  .nav-links.open{right:0}
-  .nav-item{width:100%}
-  .nav-item > a,.nav-item > button{width:100%;justify-content:space-between;font-size:.94rem;padding:15px 8px;border-bottom:1px solid var(--border);border-radius:0}
-  .nav-item > a:hover,.nav-item > button:hover{background:none}
-  .dd{position:static;min-width:0;box-shadow:none;border:none;border-radius:0;padding:2px 0 8px 8px;display:none;opacity:1;visibility:visible;transform:none;background:var(--ice)}
-  .nav-item.open > .dd{display:block}
-  .dd-link{font-size:.86rem;padding:11px 10px}
-  .dd-link .caret{transform:rotate(0)}
-  .dd-item.open > .dd-link .caret{transform:rotate(180deg)}
-  .dd2{position:static;min-width:0;box-shadow:none;border:none;border-radius:0;padding:0 0 4px 40px;display:none;opacity:1;visibility:visible;transform:none;background:transparent}
-  .dd-item.open > .dd2{display:block}
-  .dd2 .dd-link{font-size:.82rem;padding:9px 8px;color:var(--slate)}
-  .nav-cta{margin-top:16px;justify-content:center!important;border-bottom:none!important}
-}
+<section class="sec" id="climatizare">
+<div class="sec-inner center">
+  <div class="eyebrow rv">Climatizare</div>
+  <h2 class="h2 rv">Sisteme de climatizare</h2>
+  <p class="sub rv">De la hale industriale la apartamente si vehicule.</p>
+  <div class="cards" style="max-width:900px;margin:0 auto">
+    <a href="#climatizare-industriala" class="card rv">
+      <div class="card-num mono">01 / VRF &amp; MULTI-SPLIT</div>
+      <div class="card-ico ico-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M6 7V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3"/><line x1="6" y1="12" x2="6" y2="16"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="18" y1="12" x2="18" y2="16"/></svg></div>
+      <h3>Industriala</h3>
+      <p>Hale, depozite, spatii comerciale. 12.000 – 240.000 BTU/h.</p>
+      <span class="card-arrow">Detalii <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+    </a>
+    <a href="#climatizare-rezidentiala" class="card rv">
+      <div class="card-num mono">02 / SPLIT INVERTER</div>
+      <div class="card-ico ico-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+      <h3>Rezidentiala</h3>
+      <p>Case si apartamente. Clasa A++/A+++, montaj in aceeasi zi.</p>
+      <span class="card-arrow">Detalii <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+    </a>
+    <a href="#climatizare-auto" class="card rv">
+      <div class="card-num mono">03 / GENERATOR O3</div>
+      <div class="card-ico ico-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
+      <h3>Auto si Utilaje</h3>
+      <p>Ozonizare si service clima pentru vehicule si utilaje.</p>
+      <span class="card-arrow">Detalii <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+    </a>
+  </div>
+</div>
+</section>
 
-/* ═══ HERO ═══ */
-.hero{padding:380px 24px 90px;text-align:center;position:relative;overflow:hidden;background:linear-gradient(180deg,var(--ice) 0%,var(--white) 100%)}
-@media(max-width:600px){.hero{padding:260px 24px 70px}}
-.hero-wave{position:absolute;bottom:-1px;left:0;width:100%;line-height:0}
-.hero-wave svg{width:100%;height:60px;display:block}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:60px 60px;opacity:.35;mask-image:radial-gradient(ellipse 75% 65% at 50% 10%,#000,transparent)}
-.hero-orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.28;pointer-events:none;animation:orbFloat 9s ease-in-out infinite}
-.orb-a{width:440px;height:440px;background:#64B5F6;top:-140px;right:-100px}
-.orb-b{width:340px;height:340px;background:#E8801F;bottom:-100px;left:-80px;animation-delay:4s}
-.orb-c{width:220px;height:220px;background:#29B6F6;top:30%;left:5%;opacity:.18;animation-delay:2s}
-@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(24px,-18px) scale(1.05)}}
-.deco-icon{position:absolute;opacity:.5;pointer-events:none;animation:decoDrift 7s ease-in-out infinite}
-.deco-icon svg{width:100%;height:100%}
-.deco-1{width:34px;height:34px;top:18%;left:12%;color:var(--steel);animation-delay:.5s}
-.deco-2{width:26px;height:26px;top:65%;right:14%;color:var(--orange);animation-delay:1.8s}
-.deco-3{width:22px;height:22px;top:22%;right:20%;color:var(--cyan);animation-delay:3.2s}
-@keyframes decoDrift{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-16px) rotate(12deg)}}
-.hero-inner{max-width:760px;margin:0 auto;position:relative;z-index:1}
-.kicker{font-family:'IBM Plex Mono',monospace;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--steel);margin-bottom:14px}
-.hero h1{font-size:clamp(2.1rem,4.8vw,3.3rem);font-weight:800;line-height:1.14;margin-bottom:20px;letter-spacing:-.03em;color:var(--navy)}
-.hero h1 span{color:var(--steel)}
-.hero-lead{font-size:1.05rem;color:var(--slate);max-width:560px;margin:0 auto 36px;line-height:1.75}
-.btn-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.btn{padding:15px 30px;border-radius:11px;font-weight:700;text-decoration:none;font-size:.92rem;display:inline-flex;align-items:center;gap:9px;transition:all .35s cubic-bezier(.34,1.56,.64,1);border:none;cursor:pointer;font-family:inherit;position:relative;overflow:hidden}
-.btn::after{content:'';position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.35),transparent);transform:skewX(-20deg);transition:left .6s ease}
-.btn:hover::after{left:130%}
-.btn-navy{background:linear-gradient(135deg,var(--navy),var(--steel));color:#fff;box-shadow:0 8px 26px rgba(21,101,192,.28)}
-.btn-navy:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 16px 36px rgba(21,101,192,.36)}
-.btn-orange{background:linear-gradient(135deg,var(--orange),#F5A623);color:#fff;box-shadow:0 8px 24px rgba(232,128,31,.3)}
-.btn-orange:hover{transform:translateY(-4px) scale(1.02);box-shadow:0 16px 36px rgba(232,128,31,.4)}
-.btn-ghost{background:var(--white);color:var(--navy);border:1.5px solid var(--border)}
-.btn-ghost:hover{border-color:var(--steel);color:var(--steel);transform:translateY(-4px) scale(1.02)}
+<section class="svc" id="climatizare-industriala">
+<div class="svc-inner">
+  <div class="split">
+    <div class="split-media rv">
+      <img src="images/trane-rooftop-real.jpg" alt="Centrala tratare aer rooftop Trane">
+      <span class="split-tag">01 / INDUSTRIAL</span>
+    </div>
+    <div class="rv">
+      <span class="svc-tag">Spatii comerciale &amp; industriale</span>
+      <h2 class="svc-title">Climatizare industriala</h2>
+      <p class="svc-desc">Sisteme pentru peste 24.000 BTU/h — hale, depozite, spatii comerciale, dimensionate pe sarcina termica reala.</p>
+      <div class="specs">
+        <div class="spec"><div class="spec-l">Capacitate</div><div class="spec-v">&gt; 24.000 BTU/h</div></div>
+        <div class="spec"><div class="spec-l">Sisteme</div><div class="spec-v">VRF/VRV, Duct type, Casete</div></div>
+        <div class="spec"><div class="spec-l">Aplicatii</div><div class="spec-v">Rooftop-uri, chillere, CTA</div></div>
+        <div class="spec"><div class="spec-l">Agent frigorific</div><div class="spec-v">R407C / R410A</div></div>
+      </div>
+      <div class="tag-group">
+        <div class="tag-group-l">Echipamente</div>
+        <div class="tag-chips">
+          <span class="tag-chip">Rooftop-uri</span>
+          <span class="tag-chip">Chillere</span>
+          <span class="tag-chip">Duct-uri</span>
+          <span class="tag-chip">Ventiloconvectoare</span>
+          <span class="tag-chip">Pompe de caldura</span>
+          <span class="tag-chip">Split &amp; multi-split</span>
+          <span class="tag-chip">CTA-uri</span>
+          <span class="tag-chip">Ventilatie industriala</span>
+          <span class="tag-chip">Umidificatoare</span>
+          <span class="tag-chip">Dezumidificatoare</span>
+          <span class="tag-chip">Exhaustare fum</span>
+          <span class="tag-chip">Perdele de aer</span>
+        </div>
+      </div>
+      <div class="tag-group">
+        <div class="tag-group-l">Sectoare deservite</div>
+        <div class="tag-chips">
+          <span class="tag-chip">Hale de productie</span>
+          <span class="tag-chip">Centre comerciale</span>
+          <span class="tag-chip">Camere de servere</span>
+          <span class="tag-chip">Laboratoare</span>
+          <span class="tag-chip">Centre de sanatate</span>
+          <span class="tag-chip">Institutii de cercetare</span>
+        </div>
+      </div>
+      <ul class="checks">
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Calcul sarcina termica si dimensionare corecta</li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Montaj, punere in functiune si testare presiuni</li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Filtre de particule profesionale, certificate ISO 9001</li>
+      </ul>
+      <div class="info-box rv">
+        <span class="info-box-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+        <div>
+          <div class="info-box-title">Igienizare clima industriala</div>
+          <div class="info-box-text">Igienizarea presupune tratarea agregatelor cu solutii dezinfectante de tipul <b>Defater Extra</b> si curatarea aparatelor de impuritati. Este necesara la fiecare <b>6-8 luni</b>, pentru a evita scaderea eficientei cu minimum <b>25-30%</b> si cresterea consumului electric cauzata de praf si impuritati absorbite de vaporizator si condensator. Recomandam si inlocuirea filtrelor, plus tratarea tavilor de condens contra ciupercilor si alergenilor, care pot afecta caile respiratorii.</div>
+        </div>
+      </div>
+      <a href="https://wa.me/40758552980?text=Buna%2C%20vreau%20o%20oferta%20pentru%20climatizare%20industriala." class="btn btn-navy">Cere oferta personalizata</a>
+    </div>
+  </div>
+</div>
+</section>
 
-.stats{display:grid;grid-template-columns:repeat(4,1fr);max-width:680px;margin:52px auto 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
-.stat{text-align:center;padding:20px 8px;border-right:1px solid var(--border)}
-.stat:last-child{border-right:none}
-.stat-num{font-family:'IBM Plex Mono',monospace;font-size:1.45rem;font-weight:600;color:var(--navy);display:block}
-.stat-lbl{font-size:.68rem;color:var(--slate);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
-@media(max-width:600px){.stats{grid-template-columns:1fr 1fr}.stat:nth-child(2){border-right:none}.stat:nth-child(n+3){border-top:1px solid var(--border)}}
+<section class="svc alt" id="climatizare-rezidentiala">
+<div class="svc-inner">
+  <div class="split rev">
+    <div class="rv">
+      <span class="svc-tag">Locuinte &amp; apartamente</span>
+      <h2 class="svc-title">Climatizare rezidentiala</h2>
+      <p class="svc-desc">Montaj split si multi-split pentru case si apartamente, cu eficienta energetica ridicata.</p>
+      <div class="specs">
+        <div class="spec"><div class="spec-l">Capacitate</div><div class="spec-v">9.000–24.000 BTU/h</div></div>
+        <div class="spec"><div class="spec-l">Sisteme</div><div class="spec-v">Split, Duct type, Casete</div></div>
+        <div class="spec"><div class="spec-l">Clasa energ.</div><div class="spec-v">A++ / A+++</div></div>
+        <div class="spec"><div class="spec-l">Agent frigorific</div><div class="spec-v">R32</div></div>
+      </div>
+      <ul class="checks">
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Montaj unitate interioara si exterioara</li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Vacuumare, incarcare freon si testare</li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Configurare si setari optime de consum</li>
+      </ul>
+      <a href="https://wa.me/40758552980?text=Buna%2C%20vreau%20o%20oferta%20pentru%20climatizare%20rezidentiala." class="btn btn-navy">Cere oferta personalizata</a>
+    </div>
+    <div class="split-media rv">
+      <img src="images/hero.jpg" alt="Climatizare rezidentiala">
+      <span class="split-tag">02 / REZIDENTIAL</span>
+    </div>
+  </div>
+</div>
+</section>
 
-/* ═══ SECTIONS ═══ */
-.sec{padding:90px 24px}
-.sec.alt{background:var(--ice)}
-.sec-inner{max-width:1140px;margin:0 auto}
-.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.14em;color:var(--steel);margin-bottom:12px}
-.h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;letter-spacing:-.02em;color:var(--navy);margin-bottom:12px}
-.sub{color:var(--slate);font-size:.96rem;max-width:540px;margin-bottom:46px}
-.center{text-align:center}
-.center .sub{margin-left:auto;margin-right:auto}
+<section class="svc" id="climatizare-auto">
+<div class="svc-inner">
+  <div class="split">
+    <div class="split-media rv">
+      <img src="images/auto-diagrama.jpg" alt="Sistem climatizare auto">
+      <span class="split-tag">03 / AUTO &amp; UTILAJE</span>
+    </div>
+    <div class="rv">
+      <span class="svc-tag" style="color:#E8801F">Vehicule &amp; utilaje</span>
+      <h2 class="svc-title">Clima auto si utilaje</h2>
+      <p class="svc-desc">Ozonizare, incarcare freon si reparatii complete de la A la Z pentru instalatia de climatizare auto sau utilaje.</p>
+      <div class="specs">
+        <div class="spec"><div class="spec-l">Metoda</div><div class="spec-v">Ozon O3 + freon</div></div>
+        <div class="spec"><div class="spec-l">Agent frigorific</div><div class="spec-v">R134a / R1234yf</div></div>
+        <div class="spec"><div class="spec-l">Eficacitate</div><div class="spec-v">99.9% bacterii/virusi</div></div>
+        <div class="spec"><div class="spec-l">Durata</div><div class="spec-v">30–60 minute</div></div>
+      </div>
+      <ul class="checks">
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Ozonizare habitaclu — elimina mirosuri si bacterii, fara chimicale</li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Incarcare freon, verificare etanseitate si vacuumare instalatie</li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Disponibil pentru auto, camioane si utilaje / flote</li>
+      </ul>
+      <a href="https://wa.me/40758552980?text=Buna%2C%20vreau%20o%20oferta%20pentru%20clima%20auto." class="btn btn-navy">Cere oferta personalizata</a>
+    </div>
+  </div>
+</div>
+</section>
 
-/* ═══ PILLAR CARDS (overview grids) ═══ */
-.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:26px 22px;text-decoration:none;color:var(--text);transition:all .4s cubic-bezier(.34,1.56,.64,1);position:relative;overflow:hidden;display:block}
-.sec.alt .card{background:var(--white)}
-.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--steel),var(--cyan),var(--orange));transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.34,1.56,.64,1)}
-.card:hover::before{transform:scaleX(1)}
-.card:hover{transform:translateY(-9px) scale(1.015);box-shadow:0 26px 50px rgba(21,101,192,.15);border-color:transparent}
-.card:hover .card-ico{transform:scale(1.15) rotate(-6deg)}
-.card-num{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--slate);font-weight:600;margin-bottom:14px}
-.card-ico{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;transition:transform .45s cubic-bezier(.34,1.56,.64,1)}
-.card-ico svg{width:23px;height:23px}
-.ico-blue{background:linear-gradient(135deg,#E1F5FE,#B3E5FC);color:var(--steel)}
-.ico-orange{background:linear-gradient(135deg,#FDF0E2,#FFE0B2);color:var(--orange)}
-.ico-green{background:linear-gradient(135deg,#E4F5EC,#C8F0DA);color:var(--ok)}
-.card h3{font-size:1rem;font-weight:700;margin-bottom:7px;letter-spacing:-.01em}
-.card p{font-size:.83rem;color:var(--slate);margin-bottom:14px}
-.card-arrow{display:inline-flex;align-items:center;gap:6px;font-size:.79rem;font-weight:700;color:var(--steel)}
-.card-arrow svg{width:14px;height:14px;transition:transform .25s}
-.card:hover .card-arrow svg{transform:translateX(4px)}
+<section class="sec alt" id="serviceac">
+<div class="sec-inner center">
+  <div class="eyebrow rv">Service A.C.</div>
+  <h2 class="h2 rv">Igienizare, reparatii, mentenanta, revizii</h2>
+  <p class="sub rv">Echipamentele tale, mereu curate si in parametri.</p>
+  <div class="cards">
+    <a href="#igienizare" class="card rv">
+      <div class="card-num mono">01 / IONI DE ARGINT</div>
+      <div class="card-ico ico-blue"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+      <h3>Igienizare</h3>
+      <p>Eliminare mucegai, bacterii si mirosuri. 99.9% eficacitate.</p>
+      <span class="card-arrow">Detalii <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+    </a>
+    <a href="#reparatii" class="card rv">
+      <div class="card-num mono">02 / DIAGNOSTICARE</div>
+      <div class="card-ico ico-orange"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg></div>
+      <h3>Reparatii</h3>
+      <p>Freon, compresoare, placi electronice. Garantie in scris.</p>
+      <span class="card-arrow">Detalii <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+    </a>
+    <a href="#mentenanta" class="card rv">
+      <div class="card-num mono">03 / CONTRACTE</div>
+      <div class="card-ico ico-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+      <h3>Mentenanta</h3>
+      <p>Vizite programate pentru firme si persoane fizice.</p>
+      <span class="card-arrow">Detalii <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+    </a>
+    <a href="#revizii" class="card rv">
+      <div class="card-num mono">04 / VERIFICARI</div>
+      <div class="card-ico ico-green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+      <h3>Revizii</h3>
+      <p>Control anual complet: presiuni, trasee, filtre, electric.</p>
+      <span class="card-arrow">Detalii <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+    </a>
+  </div>
+</div>
+</section>
 
-/* ═══ SERVICE DETAIL (split image+text) ═══ */
-.svc{padding:80px 24px}
-.svc.alt{background:var(--ice)}
-.svc-inner{max-width:1140px;margin:0 auto}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
-.split.rev .split-media{order:2}
-.split-media{border-radius:18px;overflow:hidden;position:relative;box-shadow:0 18px 46px rgba(21,101,192,.14);transition:box-shadow .4s, transform .4s cubic-bezier(.34,1.56,.64,1)}
-.split-media:hover{transform:translateY(-6px);box-shadow:0 30px 60px rgba(21,101,192,.22)}
-.split-media img{width:100%;aspect-ratio:5/4;object-fit:cover;transition:transform .8s cubic-bezier(.4,0,.2,1)}
-.split-media:hover img{transform:scale(1.08) rotate(.5deg)}
-.split-tag{position:absolute;top:16px;left:16px;background:rgba(11,27,51,.85);backdrop-filter:blur(8px);color:#fff;padding:7px 14px;border-radius:8px;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-family:'IBM Plex Mono',monospace}
-@media(max-width:860px){.split{grid-template-columns:1fr;gap:32px}.split.rev .split-media{order:0}}
+<section class="svc" id="igienizare">
+<div class="svc-inner">
+  <div class="split">
+    <div class="split-media rv">
+      <img src="images/igienizare-ac.png" alt="Igienizare aer conditionat">
+      <span class="split-tag">SERVICE 01 / IGIENIZARE</span>
+    </div>
+    <div class="rv">
+      <span class="svc-tag">Ioni de argint</span>
+      <h2 class="svc-title">Igienizare A.C.</h2>
+      <p class="svc-desc">Tratament antibacterian care elimina mucegai, bacterii, alergeni si mirosuri din unitatile interioare.</p>
+      <div class="specs">
+        <div class="spec"><div class="spec-l">Metoda</div><div class="spec-v">Ioni de argint</div></div>
+        <div class="spec"><div class="spec-l">Eficacitate</div><div class="spec-v">99.9% bacterii</div></div>
+        <div class="spec"><div class="spec-l">Durata</div><div class="spec-v">45–90 min/unitate</div></div>
+        <div class="spec"><div class="spec-l">Frecventa</div><div class="spec-v">Anual, primavara</div></div>
+      </div>
+      <ul class="checks">
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Curatare profunda vaporizator si turbina</li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Substante certificate, sigure pentru sanatate</li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Efect de durata — aer curat saptamani intregi</li>
+      </ul>
+      <a href="https://wa.me/40758552980?text=Buna%2C%20vreau%20oferta%20pentru%20igienizare%20AC." class="btn btn-navy">Cere oferta personalizata</a>
+    </div>
+  </div>
+</div>
+</section>
 
-.svc-tag{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--border);color:var(--steel);padding:6px 14px;border-radius:8px;font-size:.73rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:16px}
-.svc-title{font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:800;letter-spacing:-.02em;margin-bottom:14px;color:var(--navy)}
-.svc-desc{color:var(--slate);font-size:.93rem;margin-bottom:22px}
+<section class="svc alt" id="reparatii">
+<div class="svc-inner">
+  <div class="split rev">
+    <div class="rv">
+      <span class="svc-tag" style="color:#E8801F">Diagnosticare rapida</span>
+      <h2 class="svc-title">Reparatii A.C.</h2>
+      <p class="svc-desc">Diagnosticare si reparatii pentru orice defectiune: pierderi de freon, compresoare, placi electronice.</p>
+      <div class="specs">
+        <div class="spec"><div class="spec-l">Diagnostic</div><div class="spec-v">La fata locului</div></div>
+        <div class="spec"><div class="spec-l">Agent frig.</div><div class="spec-v">R32/R410A/R407C</div></div>
+        <div class="spec"><div class="spec-l">Interventie</div><div class="spec-v">De regula aceeasi zi</div></div>
+        <div class="spec"><div class="spec-l">Garantie</div><div class="spec-v">In scris</div></div>
+      </div>
+      <ul class="checks">
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Completare agent frigorific, orice tip</li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Reparatii compresoare, placi electronice, piese de schimb</li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Detectare pierderi, filtre de aer si verificare traseu</li>
+      </ul>
+      <a href="https://wa.me/40758552980?text=Buna%2C%20am%20nevoie%20de%20o%20reparatie%20AC." class="btn btn-navy">Cere oferta personalizata</a>
+    </div>
+    <div class="split-media rv">
+      <img src="images/gal-freon.jpg" alt="Reparatie si completare freon">
+      <span class="split-tag">SERVICE 02 / REPARATII</span>
+    </div>
+  </div>
+</div>
+</section>
 
-.specs{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-bottom:22px}
-.spec{background:var(--ice);border:1px solid var(--border);border-radius:12px;padding:12px 14px}
-.svc.alt .spec{background:var(--white)}
-.spec-l{font-size:.66rem;color:var(--slate);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
-.spec-v{font-family:'IBM Plex Mono',monospace;font-size:.82rem;font-weight:600;color:var(--navy)}
+<section class="svc" id="mentenanta">
+<div class="svc-inner">
+  <div class="split">
+    <div class="split-media rv">
+      <img src="images/gal-unitate-exterioara.jpg" alt="Mentenanta aer conditionat">
+      <span class="split-tag">SERVICE 03 / MENTENANTA</span>
+    </div>
+    <div class="rv">
+      <span class="svc-tag">Contracte firme &amp; persoane fizice</span>
+      <h2 class="svc-title">Mentenanta A.C.</h2>
+      <p class="svc-desc">Contracte de mentenanta programata — echipamentele tale raman mereu in parametri optimi.</p>
+      <div class="specs">
+        <div class="spec"><div class="spec-l">Tip contract</div><div class="spec-v">Lunar/trimestrial/anual</div></div>
+        <div class="spec"><div class="spec-l">Clienti</div><div class="spec-v">Firme si persoane fizice</div></div>
+        <div class="spec"><div class="spec-l">Include</div><div class="spec-v">Curatare, verificari</div></div>
+        <div class="spec"><div class="spec-l">Raportare</div><div class="spec-v">Fisa la fiecare vizita</div></div>
+      </div>
+      <ul class="checks">
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Prioritate la interventii pentru clientii cu contract</li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Prelungirea duratei de viata a echipamentelor</li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Consum optimizat — facturi mai mici</li>
+      </ul>
+      <a href="https://wa.me/40758552980?text=Buna%2C%20vreau%20detalii%20despre%20mentenanta." class="btn btn-navy">Cere oferta personalizata</a>
+    </div>
+  </div>
+</div>
+</section>
 
-.checks{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
-.checks li{display:flex;align-items:flex-start;gap:11px;font-size:.88rem}
-.chk{width:19px;height:19px;border-radius:6px;background:var(--ok-lt);color:var(--ok);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
-.chk svg{width:11px;height:11px}
+<section class="svc alt" id="revizii">
+<div class="svc-inner">
+  <div class="split rev">
+    <div class="rv">
+      <span class="svc-tag">Recomandat anual</span>
+      <h2 class="svc-title">Revizii A.C.</h2>
+      <p class="svc-desc">Verificare tehnica completa: presiuni, traseu frigorific, filtre, instalatie electrica.</p>
+      <div class="specs">
+        <div class="spec"><div class="spec-l">Frecventa</div><div class="spec-v">Anual, inainte de sezon</div></div>
+        <div class="spec"><div class="spec-l">Verificari</div><div class="spec-v">Complete, 8 categorii</div></div>
+        <div class="spec"><div class="spec-l">Durata</div><div class="spec-v">30–60 min/unitate</div></div>
+        <div class="spec"><div class="spec-l">Include</div><div class="spec-v">Filtre + raport</div></div>
+      </div>
+      <ul class="checks">
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Electrice, mecanice, frigotehnice — presiune agent, ulei compresor</li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Debit aer, filtre aer si filtre agent refrigerant</li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Test complet: racire, free cooling, incalzire, recuperare caldura</li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Motoare electrice, compresoare, motoare centrifugale</li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Placi electronice, controllere, software si comunicare BMS</li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Verificare bacteriana: condensatori, vaporizatori, tubulatura, grile, anemostate</li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Rezistente structurale si piese suspendate</li>
+        <li><span class="chk"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Arzatoare si supape pentru modul incalzire</li>
+      </ul>
+      <a href="https://wa.me/40758552980?text=Buna%2C%20vreau%20sa%20programez%20o%20revizie%20AC." class="btn btn-navy">Cere oferta personalizata</a>
+    </div>
+    <div class="split-media rv">
+      <img src="images/gal-igienizare-ac.jpg" alt="Revizie aer conditionat">
+      <span class="split-tag">SERVICE 04 / REVIZII</span>
+    </div>
+  </div>
+</div>
+</section>
 
-.tag-group{margin-bottom:18px}
-.tag-group-l{font-size:.68rem;color:var(--slate);font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
-.tag-chips{display:flex;flex-wrap:wrap;gap:6px}
-.tag-chip{background:var(--ice);border:1px solid var(--border);color:var(--navy);font-size:.76rem;font-weight:600;padding:5px 12px;border-radius:20px;transition:all .25s}
-.svc.alt .tag-chip{background:var(--white)}
-.tag-chip:hover{background:var(--steel);color:#fff;border-color:var(--steel);transform:translateY(-2px)}
+<section class="price">
+  <div class="price-in">
+    <h2 class="rv">Pretul se stabileste la fata locului</h2>
+    <p class="rv">Evaluam gratuit si primesti o oferta personalizata, clara, fara costuri ascunse.</p>
+    <div class="price-pill rv">Evaluare gratuita &middot; Oferta personalizata</div>
+    <br>
+    <a href="https://wa.me/40758552980?text=Buna%20ziua%2C%20as%20dori%20o%20evaluare%20gratuita." class="btn btn-orange rv">Programeaza evaluare gratuita</a>
+  </div>
+</section>
 
-/* ═══ COMPANY PRESENTATION CARD ═══ */
-.company-card{max-width:820px;margin:0 auto;background:linear-gradient(160deg,var(--ice) 0%,#fff 60%);border:1.5px solid var(--border);border-radius:24px;padding:44px 40px;box-shadow:0 20px 56px rgba(21,101,192,.1);position:relative;overflow:hidden}
-.company-card::before{content:'';position:absolute;top:-60px;right:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,var(--cyan-lt) 0%,transparent 70%)}
-.company-badge{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--border);color:var(--steel);padding:7px 16px;border-radius:50px;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:20px;box-shadow:0 2px 10px rgba(21,101,192,.08)}
-.company-badge svg{width:15px;height:15px}
-.company-name{font-size:clamp(1.4rem,2.6vw,1.9rem);font-weight:800;color:var(--navy);letter-spacing:-.02em;margin-bottom:14px;position:relative}
-.company-desc{color:var(--slate);font-size:.94rem;margin-bottom:26px;position:relative;max-width:640px}
-.company-facts{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:26px;position:relative}
-.company-fact{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:12px 15px;text-align:left}
-.company-fact-l{font-size:.66rem;color:var(--slate);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
-.company-fact-v{font-family:'IBM Plex Mono',monospace;font-size:.82rem;font-weight:600;color:var(--navy)}
-.company-tagline{border-left:3px solid var(--orange);padding-left:16px;font-style:italic;color:var(--steel);font-weight:600;font-size:1rem;position:relative;text-align:left}
-@media(max-width:600px){.company-card{padding:32px 24px}.company-facts{grid-template-columns:1fr}}
+<section class="sec">
+<div class="sec-inner center">
+  <div class="eyebrow rv">Procedura</div>
+  <h2 class="h2 rv">Cum lucram</h2>
+  <p class="sub rv">Pasi simpli, comunicare clara, rezultat garantat.</p>
+  <div class="steps">
+    <div class="step rv"><span class="step-n mono">01</span><h4>Evaluare</h4><p>Venim la fata locului si evaluam gratuit situatia.</p></div>
+    <div class="step rv"><span class="step-n mono">02</span><h4>Oferta</h4><p>Primesti pret clar, in scris, fara costuri ascunse.</p></div>
+    <div class="step rv"><span class="step-n mono">03</span><h4>Interventie</h4><p>Executie curata, la standard, cu echipa proprie.</p></div>
+    <div class="step rv"><span class="step-n mono">04</span><h4>Garantie</h4><p>Testare finala si garantie scrisa pe lucrare.</p></div>
+  </div>
+</div>
+</section>
 
-/* ═══ INFO BOX (igienizare explainer) ═══ */
-.info-box{background:var(--cyan-lt);border:1px solid #BEE8F7;border-radius:14px;padding:20px 22px;margin-bottom:24px;display:flex;gap:14px;align-items:flex-start}
-.info-box-icon{width:34px;height:34px;border-radius:9px;background:var(--white);color:var(--steel);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.info-box-icon svg{width:18px;height:18px}
-.info-box-title{font-weight:700;font-size:.86rem;color:var(--navy);margin-bottom:6px}
-.info-box-text{font-size:.83rem;color:var(--slate);line-height:1.65}
-.info-box-text b{color:var(--navy)}
+<section class="sec alt" id="galerie">
+<div class="sec-inner center">
+  <div class="eyebrow rv">Portofoliu</div>
+  <h2 class="h2 rv">Din lucrarile noastre</h2>
+  <p class="sub rv">Interventii reale la locuinte, spatii comerciale si vehicule din Cluj.</p>
+  <div class="g-grid">
+    <div class="g-item g-wide rv" onclick="openLB(this)"><img src="images/gal-igienizare-ac.jpg" alt="Igienizare AC" loading="lazy"><div class="g-ov"><span>Igienizare completa A.C.</span></div></div>
+    <div class="g-item rv" onclick="openLB(this)"><img src="images/gal-ozonizare-auto.jpg" alt="Ozonizare auto" loading="lazy"><div class="g-ov"><span>Ozonizare auto</span></div></div>
+    <div class="g-item rv" onclick="openLB(this)"><img src="images/gal-filtre.jpg" alt="Curatare filtre" loading="lazy"><div class="g-ov"><span>Curatare filtre A.C.</span></div></div>
+    <div class="g-item rv" onclick="openLB(this)"><img src="images/gal-unitate-exterioara.jpg" alt="Unitate exterioara" loading="lazy"><div class="g-ov"><span>Montaj unitate exterioara</span></div></div>
+    <div class="g-item rv" onclick="openLB(this)"><img src="images/gal-habitaclu.jpg" alt="Igienizare habitaclu" loading="lazy"><div class="g-ov"><span>Igienizare habitaclu</span></div></div>
+    <div class="g-item g-wide rv" onclick="openLB(this)"><img src="images/gal-freon.jpg" alt="Completare freon" loading="lazy"><div class="g-ov"><span>Reparatie si completare freon</span></div></div>
+    <div class="g-item rv" onclick="openLB(this)"><img src="images/lennox-chiller.jpg" alt="Chiller industrial Lennox" loading="lazy"><div class="g-ov"><span>Chiller industrial Lennox</span></div></div>
+    <div class="g-item rv" onclick="openLB(this)"><img src="images/chiller-industrial.jpg" alt="Chiller racit cu aer" loading="lazy"><div class="g-ov"><span>Chiller industrial</span></div></div>
+    <div class="g-item rv" onclick="openLB(this)"><img src="images/bosch-statie.jpg" alt="Statie incarcare freon Bosch" loading="lazy"><div class="g-ov"><span>Statie incarcare freon auto</span></div></div>
+    <div class="g-item rv" onclick="openLB(this)"><img src="images/compresor-auto.jpg" alt="Compresor clima auto" loading="lazy"><div class="g-ov"><span>Diagnostic compresor auto</span></div></div>
+    <div class="g-item g-wide rv" onclick="openLB(this)"><img src="images/manometre-auto.jpg" alt="Manometre clima auto" loading="lazy"><div class="g-ov"><span>Verificare presiuni clima auto</span></div></div>
+  </div>
+</div>
+</section>
+<div class="lb" id="lb" onclick="closeLB()"><button class="lb-x">&times;</button><img id="lb-img" src="" alt=""></div>
 
-/* ═══ PROCESS ═══ */
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
-.step{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:22px 20px}
-.step-n{font-family:'IBM Plex Mono',monospace;font-size:1.6rem;font-weight:600;color:var(--cyan);margin-bottom:10px;display:block}
-.step h4{font-size:.92rem;font-weight:700;margin-bottom:6px}
-.step p{font-size:.8rem;color:var(--slate)}
+<section class="sec" id="recenzii">
+<div class="sec-inner center">
+  <div class="eyebrow rv">Recenzii</div>
+  <h2 class="h2 rv">Ce spun clientii nostri</h2>
+  <p class="sub rv">4.9 din 5 — nota medie din peste 150 de recenzii.</p>
+  <div class="r-grid">
+    <div class="r-card rv"><div class="r-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="r-text">"Au montat climatizarea la depozitul nostru de 400mp. Dimensionare corecta, functioneaza impecabil de doi ani."</p><div class="r-author"><div class="r-av">M</div><div><div class="r-name">Marius Todea</div><div class="r-meta">Climatizare industriala</div></div></div></div>
+    <div class="r-card rv"><div class="r-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="r-text">"Igienizare la ambele aparate in mai putin de doua ore. Aerul e complet altfel, fara miros de mucegai."</p><div class="r-author"><div class="r-av">R</div><div><div class="r-name">Radu Moldovan</div><div class="r-meta">Igienizare A.C.</div></div></div></div>
+    <div class="r-card rv"><div class="r-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="r-text">"Ozonizare la masina — aveam un miros persistent de care nu scapam. Acum miroase ca noua."</p><div class="r-author"><div class="r-av">L</div><div><div class="r-name">Liviu Cristea</div><div class="r-meta">Ozonizare auto</div></div></div></div>
+    <div class="r-card rv"><div class="r-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="r-text">"Montaj split nou in dormitor. Explicatii clare, lucru curat, fara moloz lasat in urma."</p><div class="r-author"><div class="r-av">A</div><div><div class="r-name">Andrei Pop</div><div class="r-meta">Climatizare rezidentiala</div></div></div></div>
+    <div class="r-card rv"><div class="r-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div><p class="r-text">"Pierdere de freon rezolvata in aceeasi zi. Diagnosticare rapida, pret corect comunicat inainte."</p><div class="r-author"><div class="r-av">E</div><div><div class="r-name">Elena Sandu</div><div class="r-meta">Reparatie A.C.</div></div></div></div>
+    <div class="r-card rv"><div class="r-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><p class="r-text">"Contract de mentenanta pentru flota si birouri. Vizite punctuale, rapoarte clare dupa fiecare interventie."</p><div class="r-author"><div class="r-av">D</div><div><div class="r-name">Diana Banciu</div><div class="r-meta">Mentenanta + ozonizare flota</div></div></div></div>
+  </div>
+</div>
+</section>
 
-/* ═══ PRICE BANNER ═══ */
-.price{background:linear-gradient(120deg,var(--navy-deep) 0%,var(--steel) 55%,#0288A8 100%);padding:70px 24px;position:relative;overflow:hidden}
-.price::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:54px 54px}
-.price-in{max-width:620px;margin:0 auto;text-align:center;position:relative;z-index:1}
-.price-in h2{font-size:clamp(1.5rem,2.7vw,2rem);color:#fff;font-weight:800;margin-bottom:12px;letter-spacing:-.02em}
-.price-in p{color:rgba(255,255,255,.6);font-size:.95rem}
-.price-pill{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);color:#fff;padding:10px 22px;border-radius:9px;font-size:.83rem;font-weight:600;margin:24px 0}
+<section class="sec alt" id="contact">
+<div class="sec-inner center">
+  <div class="eyebrow rv">Contact</div>
+  <h2 class="h2 rv">Hai sa vorbim</h2>
+  <p class="sub rv">Raspundem rapid. Evaluarea e gratuita.</p>
+  <div class="c-grid">
+    <a href="tel:+40758552980" class="c-card rv"><div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div><div><div class="c-l">Telefon</div><div class="c-v">0758 552 980</div></div></a>
+    <a href="https://wa.me/40758552980" class="c-card rv"><div class="c-ico" style="color:#25d366"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg></div><div><div class="c-l">WhatsApp</div><div class="c-v">Raspuns rapid</div></div></a>
+    <a href="https://www.google.com/maps/@46.7637622,23.6625981,3a,75y,79.93h,90t/data=!3m7!1e1!3m5!1sEsALs6IPrqEEFhATPBuzwA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3DEsALs6IPrqEEFhATPBuzwA%26yaw%3D79.93!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D" class="c-card rv"><div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><div class="c-l">Locatie</div><div class="c-v">Gheorgeni, Str. Soporului</div></div></a>
+    <div class="c-card rv" style="cursor:default"><div class="c-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><div><div class="c-l">Program</div><div class="c-v">Luni-Sambata, 08-19</div></div></div>
+  </div>
 
-/* ═══ GALLERY ═══ */
-.g-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:210px;gap:12px}
-.g-item{border-radius:14px;overflow:hidden;position:relative;cursor:pointer;transition:transform .4s cubic-bezier(.34,1.56,.64,1),box-shadow .4s}
-.g-item:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 20px 40px rgba(21,101,192,.25);z-index:2}
-.g-item img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.4,0,.2,1)}
-.g-item:hover img{transform:scale(1.12) rotate(1deg)}
-.g-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(11,27,51,.82),transparent 55%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;padding:15px}
-.g-item:hover .g-ov{opacity:1}
-.g-ov span{color:#fff;font-weight:600;font-size:.83rem}
-.g-wide{grid-column:span 2}
-@media(max-width:860px){.g-grid{grid-template-columns:1fr 1fr;grid-auto-rows:175px}.g-wide{grid-column:span 1}}
-@media(max-width:480px){.g-grid{grid-template-columns:1fr;grid-auto-rows:195px}}
+  <div class="rv" style="max-width:660px;margin:24px auto 0;border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:0 12px 32px rgba(21,101,192,.1)">
+    <iframe
+      src="https://www.google.com/maps?q=46.7637622,23.6625981&hl=ro&z=16&output=embed"
+      width="100%" height="320" style="border:0;display:block"
+      allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+      title="Locatie Clima Expert HVAC pe Google Maps"></iframe>
+  </div>
+</div>
+</section>
 
-/* ═══ REVIEWS ═══ */
-.r-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-@media(max-width:900px){.r-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:560px){.r-grid{grid-template-columns:1fr}}
-.r-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:24px;transition:all .3s}
-.r-card:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(15,37,69,.06)}
-.r-stars{color:var(--orange);font-size:.9rem;letter-spacing:2px;margin-bottom:12px}
-.r-text{font-size:.86rem;line-height:1.7;color:var(--slate);margin-bottom:16px;font-style:italic}
-.r-author{display:flex;align-items:center;gap:10px}
-.r-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:.78rem;flex-shrink:0;background:var(--navy)}
-.r-name{font-weight:700;font-size:.83rem}.r-meta{font-size:.7rem;color:var(--slate)}
+<footer class="footer">
+<div class="footer-in">
+  <div class="footer-logo"><img src="images/logo.jpg" alt="Clima Expert HVAC"></div>
+  <div class="f-cols">
+    <div class="f-col">
+      <h5>Climatizare</h5>
+      <a href="#climatizare-industriala">Industriala</a>
+      <a href="#climatizare-rezidentiala">Rezidentiala</a>
+      <a href="#climatizare-auto">Auto si Utilaje</a>
+    </div>
+    <div class="f-col">
+      <h5>Service A.C.</h5>
+      <a href="#igienizare">Igienizare</a>
+      <a href="#reparatii">Reparatii</a>
+      <a href="#mentenanta">Mentenanta</a>
+      <a href="#revizii">Revizii</a>
+    </div>
+    <div class="f-col">
+      <h5>Contact</h5>
+      <a href="tel:+40758552980">0758 552 980</a>
+      <a href="https://wa.me/40758552980">WhatsApp</a>
+      <a href="https://www.google.com/maps/@46.7637622,23.6625981,3a,75y,79.93h,90t/data=!3m7!1e1!3m5!1sEsALs6IPrqEEFhATPBuzwA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D0%26panoid%3DEsALs6IPrqEEFhATPBuzwA%26yaw%3D79.93!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D">Gheorgeni, Cluj-Napoca</a>
+    </div>
+  </div>
+</div>
+<div class="f-bottom">
+  <p style="margin-bottom:8px">S.C. Compusys S.R.L. &middot; CUI 16345448 &middot; Reg. Com. J31/265/19.04.2004 &middot; <a href="https://www.compusysco.ro" style="color:rgba(255,255,255,.55)">www.compusysco.ro</a></p>
+  &copy; <span id="yr"></span> Clima Expert HVAC — Cluj-Napoca. Toate drepturile rezervate.
+</div>
+</footer>
 
-/* ═══ CONTACT ═══ */
-.c-grid{max-width:660px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:13px}
-@media(max-width:560px){.c-grid{grid-template-columns:1fr}}
-.c-card{display:flex;align-items:center;gap:13px;padding:18px 19px;background:var(--ice);border:1px solid var(--border);border-radius:13px;text-decoration:none;color:var(--text);transition:all .3s}
-.c-card:hover{border-color:var(--steel);transform:translateY(-3px);box-shadow:0 10px 24px rgba(15,37,69,.05)}
-.c-ico{width:42px;height:42px;border-radius:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--white);border:1px solid var(--border);color:var(--steel)}
-.c-ico svg{width:19px;height:19px}
-.c-l{font-size:.74rem;color:var(--slate)}.c-v{font-weight:700;font-size:.88rem}
+<a href="https://wa.me/40758552980" class="wa-float" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg></a>
 
-/* ═══ FOOTER ═══ */
-.footer{background:var(--navy-deep);color:rgba(255,255,255,.55);padding:50px 24px 26px;font-size:.82rem}
-.footer-in{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:start;margin-bottom:32px}
-.footer-logo img{height:112px;background:#fff;border-radius:14px;padding:10px 20px}
-@media(max-width:600px){.footer-logo img{height:80px}}
-.f-col h5{color:#fff;font-size:.82rem;font-weight:700;margin-bottom:12px;text-transform:uppercase;letter-spacing:.06em}
-.f-col a{display:block;color:rgba(255,255,255,.55);text-decoration:none;font-size:.8rem;padding:4px 0;transition:color .2s}
-.f-col a:hover{color:#fff}
-.f-cols{display:flex;gap:56px;flex-wrap:wrap}
-.f-bottom{max-width:1140px;margin:0 auto;border-top:1px solid rgba(255,255,255,.1);padding-top:22px;text-align:center}
-@media(max-width:760px){.footer-in{grid-template-columns:1fr;gap:28px;text-align:center}.f-cols{justify-content:center}.footer-logo{display:flex;justify-content:center}}
+<div class="mob-bar">
+  <a href="tel:+40758552980" class="mb-c"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Suna</a>
+  <a href="https://wa.me/40758552980" class="mb-w"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>WhatsApp</a>
+</div>
 
-/* ═══ FLOATERS ═══ */
-.wa-float{position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 6px 20px rgba(37,211,102,.35);z-index:150;transition:all .3s}
-.wa-float:hover{transform:scale(1.08)}
-.wa-float svg{width:26px;height:26px}
-.mob-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:1px solid var(--border);padding:10px 16px;z-index:99;gap:10px}
-.mob-bar a{flex:1;padding:12px;border-radius:10px;text-align:center;text-decoration:none;font-weight:700;font-size:.84rem;display:flex;align-items:center;justify-content:center;gap:8px}
-.mob-bar .mb-c{background:var(--navy);color:#fff}.mob-bar .mb-w{background:#25d366;color:#fff}
-@media(max-width:960px){.mob-bar{display:flex}.wa-float{bottom:78px}body{padding-bottom:68px}}
-
-/* ═══ LIGHTBOX ═══ */
-.lb{position:fixed;inset:0;z-index:300;background:rgba(11,27,51,.94);display:none;align-items:center;justify-content:center;padding:32px}
-.lb.open{display:flex}
-.lb img{max-width:100%;max-height:90vh;border-radius:14px;object-fit:contain;animation:lbPop .35s cubic-bezier(.34,1.56,.64,1)}
-@keyframes lbPop{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
-.lb-x{position:absolute;top:20px;right:24px;background:rgba(255,255,255,.1);border:none;color:#fff;width:44px;height:44px;border-radius:50%;font-size:1.4rem;cursor:pointer;transition:all .25s}
-.lb-x:hover{background:rgba(255,255,255,.25);transform:rotate(90deg)}
-
-.rv{opacity:0;transform:translateY(26px)}
+<script src="script.js"></script>
+</body>
+</html>
